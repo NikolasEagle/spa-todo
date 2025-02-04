@@ -1,15 +1,16 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import styles from "./App.scss";
+import ProjectsPage from "./routes/ProjectsPage";
+import TasksPage from "./routes/TasksPage";
 
 function App() {
   return (
-    <div className={styles.App}>
-      <Router>
-        <Route path="/"></Route>
-        <Route path="/:id_task"></Route>
-      </Router>
-    </div>
+    <Router path="/*">
+      <Routes>
+        <Route path="/" element={<ProjectsPage />}></Route>
+        <Route path="/:id_task" element={<TasksPage />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
