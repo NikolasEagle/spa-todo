@@ -1,0 +1,11 @@
+.Main {
+  width: calc(100% - 15px * 2);
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  background: red;
+
+  padding: 15px;
+}
