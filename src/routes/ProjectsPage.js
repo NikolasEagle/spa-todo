@@ -1,16 +1,19 @@
 import styles from "./ProjectsPage.module.scss";
 
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import Header from "../components/Header/Header";
 import Main from "../components/Main/Main";
+import Popup from "../components/Popup/Popup";
 
 import CreateProjectCard from "../components/CreateProjectCard/CreateProjectCard";
+
+export const ProjectPageContext = createContext();
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
   const [openedPopup, setOpenedPopup] = useState(false);
-  const [typePopup, setTypePopup] = useState("create_project_popup");
+  const [titlePopup, setTitlePopup] = useState("Создать проект");
 
   async function getProjects() {
     try {
@@ -33,10 +36,14 @@ export default function ProjectsPage() {
   }, [projects]);
 
   return (
-    <div className={styles.ProjectsPage}>
-      <Header title={"Проекты"} />
-      <Main content={projects} />
-      <Popup opened={openedPopup} type={"create_project_card"} />
-    </div>
+    <ProjectPageContext.Provider
+      value={{ setOpenedPopup, setTitlePopup, getProjects }}
+    >
+      <div className={styles.ProjectsPage}>
+        <Header title={"Проекты"} />
+        <Main content={projects} />
+      </div>
+      <Popup opened={openedPopup} title={titlePopup} />
+    </ProjectPageContext.Provider>
   );
 }
