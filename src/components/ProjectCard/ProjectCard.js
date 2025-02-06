@@ -1,9 +1,12 @@
 import styles from "./ProjectCard.module.scss";
 import { useContext } from "react";
 import { ProjectPageContext } from "../../routes/ProjectsPage";
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectCard({ id, name }) {
   const context = useContext(ProjectPageContext);
+
+  const navigate = useNavigate();
 
   const { setTitlePopup, setOpenedPopup, setProjectId, setProjectName } =
     context;
@@ -24,7 +27,16 @@ export default function ProjectCard({ id, name }) {
   return (
     <div id={id} className={styles.ProjectCard}>
       <div className={styles.window}>
-        <h3>{name}</h3>
+        <div
+          onClick={() => {
+            navigate(`/${id}/${name}`);
+          }}
+          tabIndex={0}
+          className={styles.name}
+        >
+          <h3>{name}</h3>
+        </div>
+
         <div className={styles.buttonPanel}>
           <button onClick={(event) => editHandleOnclick(event)}>
             Редактировать
