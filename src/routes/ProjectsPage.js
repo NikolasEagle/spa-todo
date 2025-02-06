@@ -13,7 +13,7 @@ export const ProjectPageContext = createContext();
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
   const [openedPopup, setOpenedPopup] = useState(false);
-  const [titlePopup, setTitlePopup] = useState("Создать проект");
+  const [titlePopup, setTitlePopup] = useState("");
 
   async function getProjects() {
     try {
