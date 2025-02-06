@@ -1,0 +1,15 @@
+.Header {
+  width: calc(100% - 15px * 2);
+
+  display: flex;
+
+  background: green;
+
+  padding: 15px;
+
+  h1 {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+  }
+}

@@ -1,5 +1,14 @@
 import styles from "./TasksPage.module.scss";
 
+import Header from "../components/Header/Header";
+import { useParams } from "react-router-dom";
+
 export default function TasksPage() {
-  return <div className={styles.TasksPage}></div>;
+  const { projectName } = useParams();
+
+  return (
+    <div className={styles.TasksPage}>
+      <Header title={`Проект ${projectName}`} />
+    </div>
+  );
 }
