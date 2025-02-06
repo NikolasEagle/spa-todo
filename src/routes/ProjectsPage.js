@@ -15,6 +15,8 @@ export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
   const [openedPopup, setOpenedPopup] = useState(false);
   const [titlePopup, setTitlePopup] = useState("");
+  const [projectId, setProjectId] = useState("");
+  const [projectName, setProjectName] = useState("");
 
   async function getProjects() {
     try {
@@ -25,7 +27,7 @@ export default function ProjectsPage() {
       setProjects([
         <CreateProjectCard />,
         ...JSON.parse(projectsStorage).map((project) => (
-          <ProjectCard name={project.name} />
+          <ProjectCard id={project.id} name={project.name} />
         )),
       ]);
     } catch (error) {
@@ -39,13 +41,25 @@ export default function ProjectsPage() {
 
   return (
     <ProjectPageContext.Provider
-      value={{ setOpenedPopup, setTitlePopup, getProjects }}
+      value={{
+        setOpenedPopup,
+        setTitlePopup,
+        setProjectId,
+        setProjectName,
+        projectName,
+        getProjects,
+      }}
     >
       <div className={styles.ProjectsPage}>
         <Header title={"Проекты"} />
         <Main content={projects} />
       </div>
-      <Popup opened={openedPopup} title={titlePopup} />
+      <Popup
+        opened={openedPopup}
+        title={titlePopup}
+        id={projectId}
+        name={projectName}
+      />
     </ProjectPageContext.Provider>
   );
 }

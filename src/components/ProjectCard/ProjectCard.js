@@ -1,12 +1,27 @@
 import styles from "./ProjectCard.module.scss";
+import { useContext } from "react";
+import { ProjectPageContext } from "../../routes/ProjectsPage";
 
-export default function ProjectCard({ name }) {
+export default function ProjectCard({ id, name }) {
+  const context = useContext(ProjectPageContext);
+
+  const { setTitlePopup, setOpenedPopup, setProjectId, setProjectName } =
+    context;
+  const editHandleOnclick = (event) => {
+    setTitlePopup(`Редактировать проект "${name}"`);
+    setProjectId(id);
+    setProjectName(name);
+    setOpenedPopup(true);
+  };
+
   return (
-    <div className={styles.ProjectCard}>
+    <div id={id} className={styles.ProjectCard}>
       <div className={styles.window}>
         <h3>{name}</h3>
         <div className={styles.buttonPanel}>
-          <button>Редактировать</button>
+          <button onClick={(event) => editHandleOnclick(event)}>
+            Редактировать
+          </button>
           <button>Удалить</button>
         </div>
       </div>

@@ -3,9 +3,10 @@ import styles from "./Popup.module.scss";
 import { useContext, useEffect, useState } from "react";
 
 import CreateProjectForm from "../CreateProjectForm/CreateProjectForm";
+import EditProjectForm from "../EditProjectForm/EditProjectForm";
 import { ProjectPageContext } from "../../routes/ProjectsPage";
 
-export default function Popup({ opened, title }) {
+export default function Popup({ opened, title, id }) {
   const context = useContext(ProjectPageContext);
 
   const { setOpenedPopup } = context;
@@ -15,8 +16,10 @@ export default function Popup({ opened, title }) {
   useEffect(() => {
     if (title === "Создать проект") {
       setContent(<CreateProjectForm />);
+    } else if (/^Редактировать проект/g.test(title)) {
+      setContent(<EditProjectForm id={id} />);
     }
-  }, [opened, title]);
+  }, [opened, title, id]);
 
   return (
     <div

@@ -14,8 +14,6 @@
   align-items: center;
 
   .window {
-    width: 500px;
-
     background: #ffffff;
 
     display: flex;
@@ -26,6 +24,8 @@
       display: flex;
 
       justify-content: space-between;
+
+      gap: 15px;
 
       align-items: center;
 
