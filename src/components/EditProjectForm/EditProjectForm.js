@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./EditProjectForm.module.scss";
 import { ProjectPageContext } from "../../routes/ProjectsPage";
 
@@ -9,7 +9,7 @@ export default function EditProjectForm({ id }) {
 
   const [value, setValue] = useState(projectName);
 
-  async function createProject(event) {
+  async function editProject(event) {
     event.preventDefault();
 
     const projectsStorage = JSON.parse(localStorage.getItem("projects"));
@@ -34,9 +34,9 @@ export default function EditProjectForm({ id }) {
 
   return (
     <form
-      className={styles.CreateProjectForm}
+      className={styles.EditProjectForm}
       onSubmit={(event) => {
-        createProject(event);
+        editProject(event);
       }}
     >
       <input

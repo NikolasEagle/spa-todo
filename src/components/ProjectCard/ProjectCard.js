@@ -14,6 +14,13 @@ export default function ProjectCard({ id, name }) {
     setOpenedPopup(true);
   };
 
+  const deleteHandleOnclick = (event) => {
+    setTitlePopup(`Удалить проект "${name}"`);
+    setProjectId(id);
+    setProjectName(name);
+    setOpenedPopup(true);
+  };
+
   return (
     <div id={id} className={styles.ProjectCard}>
       <div className={styles.window}>
@@ -22,7 +29,9 @@ export default function ProjectCard({ id, name }) {
           <button onClick={(event) => editHandleOnclick(event)}>
             Редактировать
           </button>
-          <button>Удалить</button>
+          <button onClick={(event) => deleteHandleOnclick(event)}>
+            Удалить
+          </button>
         </div>
       </div>
     </div>

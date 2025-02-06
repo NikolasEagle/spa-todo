@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 
 import CreateProjectForm from "../CreateProjectForm/CreateProjectForm";
 import EditProjectForm from "../EditProjectForm/EditProjectForm";
+import DeleteProjectForm from "../DeleteProjectForm/DeleteProjectForm";
 import { ProjectPageContext } from "../../routes/ProjectsPage";
 
 export default function Popup({ opened, title, id }) {
@@ -18,6 +19,8 @@ export default function Popup({ opened, title, id }) {
       setContent(<CreateProjectForm />);
     } else if (/^Редактировать проект/g.test(title)) {
       setContent(<EditProjectForm id={id} />);
+    } else if (/^Удалить проект/g.test(title)) {
+      setContent(<DeleteProjectForm id={id} />);
     }
   }, [opened, title, id]);
 
