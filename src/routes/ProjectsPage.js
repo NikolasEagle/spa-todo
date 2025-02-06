@@ -18,14 +18,13 @@ export default function ProjectsPage() {
   async function getProjects() {
     try {
       const projectsStorage = localStorage.getItem("projects");
-      if (projectsStorage) {
-        setProjects([
-          <CreateProjectCard />,
-          ...JSON.parse(projectsStorage).map((project) => project),
-        ]);
-      } else {
-        setProjects([<CreateProjectCard />]);
+      if (!projectsStorage) {
+        localStorage.setItem("projects", JSON.stringify([]));
       }
+      setProjects([
+        <CreateProjectCard />,
+        ...JSON.parse(projectsStorage).map((project) => project),
+      ]);
     } catch (error) {
       console.error(error);
     }
@@ -33,7 +32,7 @@ export default function ProjectsPage() {
 
   useEffect(() => {
     getProjects();
-  }, [projects]);
+  }, []);
 
   return (
     <ProjectPageContext.Provider

@@ -1,15 +1,48 @@
+import { useContext } from "react";
 import styles from "./CreateProjectForm.module.scss";
+import { ProjectPageContext } from "../../routes/ProjectsPage";
+
+import { nanoid } from "nanoid";
 
 export default function CreateProjectForm() {
+  const context = useContext(ProjectPageContext);
+
+  const { setOpenedPopup } = context;
+
+  async function createProject(event) {
+    event.preventDefault();
+
+    const projectsStorage = JSON.parse(localStorage.getItem("projects"));
+
+    localStorage.setItem(
+      "projects",
+      JSON.stringify([
+        {
+          id: nanoid(),
+
+          name: new FormData(event.target).get("name"),
+        },
+        ...projectsStorage,
+      ])
+    );
+
+    setOpenedPopup(false);
+  }
+
   return (
     <form
       className={styles.CreateProjectForm}
       onSubmit={(event) => {
-        event.preventDefault();
+        createProject(event);
       }}
     >
-      <input placeholder="Название проекта" autoComplete="off" required />
-      <button>Создать</button>
+      <input
+        name="name"
+        placeholder="Название проекта"
+        autoComplete="off"
+        required
+      />
+      <button type="submit">Создать</button>
     </form>
   );
 }

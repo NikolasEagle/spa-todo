@@ -16,7 +16,7 @@ export default function Popup({ opened, title }) {
     if (title === "Создать проект") {
       setContent(<CreateProjectForm />);
     }
-  }, [content, opened, title]);
+  }, [opened, title]);
 
   return (
     <div
