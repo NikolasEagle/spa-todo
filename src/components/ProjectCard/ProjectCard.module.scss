@@ -19,11 +19,13 @@
 
     justify-content: space-between;
 
+    flex-wrap: wrap;
+
     gap: 15px;
 
     .name {
       cursor: pointer;
-      width: calc(100% - 15px * 4);
+      width: calc(100% - 15px - 185px);
       background: lime;
       .h3 {
         margin: 0;
@@ -33,6 +35,8 @@
     .buttonPanel {
       display: flex;
       gap: 15px;
+
+      width: 185px;
     }
   }
 }
