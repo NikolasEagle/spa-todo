@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./EditProjectForm.module.scss";
 import { ProjectPageContext } from "../../routes/ProjectsPage";
 
@@ -8,6 +8,10 @@ export default function EditProjectForm({ id }) {
   const { setOpenedPopup, projectName, getProjects } = context;
 
   const [value, setValue] = useState(projectName);
+
+  useEffect(() => {
+    setValue(projectName);
+  }, [projectName]);
 
   async function editProject(event) {
     event.preventDefault();
@@ -28,6 +32,8 @@ export default function EditProjectForm({ id }) {
     );
 
     setOpenedPopup(false);
+
+    setValue("");
 
     getProjects();
   }
