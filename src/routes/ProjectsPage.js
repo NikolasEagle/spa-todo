@@ -7,6 +7,7 @@ import Main from "../components/Main/Main";
 import Popup from "../components/Popup/Popup";
 
 import CreateProjectCard from "../components/CreateProjectCard/CreateProjectCard";
+import ProjectCard from "../components/ProjectCard/ProjectCard";
 
 export const ProjectPageContext = createContext();
 
@@ -23,7 +24,9 @@ export default function ProjectsPage() {
       }
       setProjects([
         <CreateProjectCard />,
-        ...JSON.parse(projectsStorage).map((project) => project),
+        ...JSON.parse(projectsStorage).map((project) => (
+          <ProjectCard name={project.name} />
+        )),
       ]);
     } catch (error) {
       console.error(error);

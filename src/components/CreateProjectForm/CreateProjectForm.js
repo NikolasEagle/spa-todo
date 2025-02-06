@@ -7,7 +7,7 @@ import { nanoid } from "nanoid";
 export default function CreateProjectForm() {
   const context = useContext(ProjectPageContext);
 
-  const { setOpenedPopup } = context;
+  const { setOpenedPopup, getProjects } = context;
 
   async function createProject(event) {
     event.preventDefault();
@@ -27,6 +27,8 @@ export default function CreateProjectForm() {
     );
 
     setOpenedPopup(false);
+
+    getProjects();
   }
 
   return (
