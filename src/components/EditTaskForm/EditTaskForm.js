@@ -57,6 +57,30 @@ export default function EditTaskForm({ id }) {
 
               return queue;
             });
+            project.tasks.development.map((development) => {
+              if (development.id === taskId) {
+                development.name = new FormData(event.target).get("name");
+
+                development.desc = new FormData(event.target).get("desc");
+
+                development.priority = new FormData(event.target).get(
+                  "priority"
+                );
+              }
+
+              return development;
+            });
+            project.tasks.done.map((done) => {
+              if (done.id === taskId) {
+                done.name = new FormData(event.target).get("name");
+
+                done.desc = new FormData(event.target).get("desc");
+
+                done.priority = new FormData(event.target).get("priority");
+              }
+
+              return done;
+            });
           }
           return project;
         })
