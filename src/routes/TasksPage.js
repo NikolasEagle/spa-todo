@@ -51,7 +51,15 @@ export default function TasksPage() {
             id={queue.id}
             number={queue.number}
             name={queue.name}
+            desc={queue.desc}
+            creationDate={queue.creationDate}
+            duration={queue.duration}
+            endDate={queue.endDate}
+            priority={queue.priority}
+            files={queue.files}
             status={queue.status}
+            subTasks={queue.subTasks}
+            comments={queue.comments}
           />
         ))
       );

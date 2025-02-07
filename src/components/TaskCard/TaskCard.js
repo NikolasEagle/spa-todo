@@ -89,6 +89,7 @@ export default function TaskCard({
       </div>
 
       <div className={styles.buttonPanel}>
+        <h6>{creationDate}</h6>
         <button
         /*onClick={(event) => {
             editHandleOnclick;
