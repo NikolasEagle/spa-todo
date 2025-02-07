@@ -27,10 +27,7 @@ export default function TasksPage() {
       const currProject = projects.find((project) => project.id === projectId);
 
       const tasks = currProject.tasks;
-
-      console.log(tasks);
-
-      setQueueTasks([<CreateTaskCard />, ...tasks.queue.map((queue) => queue)]);
+      setQueueTasks(tasks.queue.map((queue) => queue));
       setDevelopmentTasks(tasks.development.map((development) => development));
       setDoneTasks(tasks.done.map((done) => done));
     } catch (error) {

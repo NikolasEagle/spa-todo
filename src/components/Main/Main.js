@@ -1,3 +1,4 @@
+import CreateTaskCard from "../CreateTaskCard/CreateTaskCard";
 import styles from "./Main.module.scss";
 
 export default function Main({ content, type }) {
@@ -8,6 +9,7 @@ export default function Main({ content, type }) {
       <div className={styles.tasks}>
         <div className={styles.queue}>
           <h4>В очереди</h4>
+          <CreateTaskCard />
           {content.queue}
         </div>
         <div className={styles.development}>
