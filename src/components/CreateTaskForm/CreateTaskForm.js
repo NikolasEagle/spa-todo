@@ -23,7 +23,7 @@ export default function CreateTaskForm() {
             {
               id: nanoid(),
 
-              number: index + 1,
+              number: project.tasks.queue.length + 1,
 
               name: new FormData(event.target).get("name"),
 
@@ -61,6 +61,8 @@ export default function CreateTaskForm() {
     setOpenedPopup(false);
 
     getTasks();
+
+    event.target.reset();
   }
 
   return (

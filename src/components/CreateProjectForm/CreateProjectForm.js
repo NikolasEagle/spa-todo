@@ -31,6 +31,8 @@ export default function CreateProjectForm() {
     setOpenedPopup(false);
 
     getProjects();
+
+    event.target.reset();
   }
 
   return (

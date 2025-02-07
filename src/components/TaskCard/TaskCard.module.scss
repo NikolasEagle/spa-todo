@@ -7,26 +7,31 @@
 
   padding: 15px;
 
-  .h3 {
+  h3,
+  h4,
+  h5 {
     margin: 0;
-    cursor: pointer;
   }
+
+  gap: 15px;
 
   .top {
     display: flex;
 
-    gap: 15px;
+    background: white;
+
+    justify-content: space-between;
 
     .name {
       cursor: pointer;
       width: calc(100% - 15px - 185px);
       background: lime;
     }
-
-    .buttonPanel {
-      display: flex;
-      gap: 15px;
-      width: 185px;
-    }
+  }
+  .buttonPanel {
+    display: flex;
+    justify-content: flex-end;
+    background: white;
+    gap: 15px;
   }
 }

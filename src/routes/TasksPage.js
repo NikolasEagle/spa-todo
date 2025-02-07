@@ -41,7 +41,7 @@ export default function TasksPage() {
           <TaskCard
             id={queue.id}
             number={queue.number}
-            name={queue.number}
+            name={queue.name}
             status={queue.status}
           />
         ))
