@@ -9,7 +9,6 @@ export default function Main({ content, type }) {
       <div className={styles.tasks}>
         <div className={styles.queue}>
           <h4>В очереди</h4>
-          <CreateTaskCard />
           {content.queue}
         </div>
         <div className={styles.development}>

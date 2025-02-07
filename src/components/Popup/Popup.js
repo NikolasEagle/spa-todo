@@ -21,7 +21,9 @@ export default function Popup({ opened, title, id }) {
       setContent(<EditProjectForm id={id} />);
     } else if (/^Удалить проект/g.test(title)) {
       setContent(<DeleteProjectForm id={id} />);
-    }
+    } /*else if (title === "Создать задачу") {
+      setContent(<CreateTaskForm id={id} />);
+    }*/
   }, [opened, title, id]);
 
   return (

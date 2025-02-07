@@ -1,21 +1,21 @@
 import styles from "./CreateTaskCard.module.scss";
 import { useContext } from "react";
-import { ProjectPageContext } from "../../routes/ProjectsPage";
+import { TasksPageContext } from "../../routes/TasksPage";
 
 export default function CreateTaskCard() {
-  /*const context = useContext(ProjectPageContext);
+  const context = useContext(TasksPageContext);
 
   const { setTitlePopup, setOpenedPopup } = context;
 
   const handleOnclick = (event) => {
-    setTitlePopup("Создать проект");
+    setTitlePopup("Создать задачу");
 
     setOpenedPopup(true);
-  };*/
+  };
 
   return (
     <div
-      /*onClick={(event) => handleOnclick(event)}*/
+      onClick={(event) => handleOnclick(event)}
       tabIndex={0}
       className={styles.CreateTaskCard}
     >

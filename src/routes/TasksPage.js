@@ -4,10 +4,11 @@ import Header from "../components/Header/Header";
 import Search from "../components/Search/Search";
 import Main from "../components/Main/Main";
 
-import CreateTaskCard from "../components/CreateTaskCard/CreateTaskCard";
+import TaskCard from "../components/TaskCard/TaskCard";
 
 import { useParams } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
+import CreateTaskCard from "../components/CreateTaskCard/CreateTaskCard";
 
 export const TasksPageContext = createContext();
 
@@ -20,6 +21,11 @@ export default function TasksPage() {
 
   const [doneTasks, setDoneTasks] = useState([]);
 
+  const [openedPopup, setOpenedPopup] = useState(false);
+  const [titlePopup, setTitlePopup] = useState("");
+  const [taskId, setTaskId] = useState("");
+  const [taskName, setTaskName] = useState("");
+
   async function getTasks() {
     try {
       const projects = JSON.parse(localStorage.getItem("projects"));
@@ -27,7 +33,7 @@ export default function TasksPage() {
       const currProject = projects.find((project) => project.id === projectId);
 
       const tasks = currProject.tasks;
-      setQueueTasks(tasks.queue.map((queue) => queue));
+      setQueueTasks(tasks.queue.map((queue) => <TaskCard />));
       setDevelopmentTasks(tasks.development.map((development) => development));
       setDoneTasks(tasks.done.map((done) => done));
     } catch (error) {
@@ -40,10 +46,24 @@ export default function TasksPage() {
   }, []);
 
   return (
-    <TasksPageContext.Provider value={getTasks}>
+    <TasksPageContext.Provider
+      value={
+        (projectId,
+        openedPopup,
+        setOpenedPopup,
+        titlePopup,
+        setTitlePopup,
+        taskId,
+        setTaskId,
+        taskName,
+        setTaskName,
+        getTasks)
+      }
+    >
       <div className={styles.TasksPage}>
         <Header title={`Проект "${projectName}"`} />
         <Search />
+        <CreateTaskCard />
         <Main
           content={{
             queue: queueTasks,
