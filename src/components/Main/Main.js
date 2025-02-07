@@ -6,9 +6,18 @@ export default function Main({ content, type }) {
   ) : (
     <div className={styles.Main}>
       <div className={styles.tasks}>
-        <div className={styles.queue}>{content.queue}</div>
-        <div className={styles.development}>{content.development}</div>
-        <div className={styles.done}>{content.done}</div>
+        <div className={styles.queue}>
+          <h4>В очереди</h4>
+          {content.queue}
+        </div>
+        <div className={styles.development}>
+          <h4>В работе</h4>
+          {content.development}
+        </div>
+        <div className={styles.done}>
+          <h4>Выполнено</h4>
+          {content.done}
+        </div>
       </div>
     </div>
   );

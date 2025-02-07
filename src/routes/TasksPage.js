@@ -4,6 +4,8 @@ import Header from "../components/Header/Header";
 import Search from "../components/Search/Search";
 import Main from "../components/Main/Main";
 
+import CreateTaskCard from "../components/CreateTaskCard/CreateTaskCard";
+
 import { useParams } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 
@@ -22,13 +24,13 @@ export default function TasksPage() {
     try {
       const projects = JSON.parse(localStorage.getItem("projects"));
 
-      const currProject = projects.filter(
-        (project) => project.id === projectId
-      );
+      const currProject = projects.find((project) => project.id === projectId);
 
       const tasks = currProject.tasks;
 
-      setQueueTasks([...tasks.queue.map((queue) => queue)]);
+      console.log(tasks);
+
+      setQueueTasks([<CreateTaskCard />, ...tasks.queue.map((queue) => queue)]);
       setDevelopmentTasks(tasks.development.map((development) => development));
       setDoneTasks(tasks.done.map((done) => done));
     } catch (error) {
@@ -46,7 +48,11 @@ export default function TasksPage() {
         <Header title={`Проект "${projectName}"`} />
         <Search />
         <Main
-          content={[queueTasks, developmentTasks, doneTasks]}
+          content={{
+            queue: queueTasks,
+            development: developmentTasks,
+            done: doneTasks,
+          }}
           type={"tasks"}
         />
       </div>

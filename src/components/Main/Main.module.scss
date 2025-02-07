@@ -43,5 +43,19 @@
 
       background: palevioletred;
     }
+
+    .queue,
+    .development,
+    .done {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      h4 {
+        margin: 0;
+        text-align: center;
+        padding: 15px;
+        background: fuchsia;
+      }
+    }
   }
 }
