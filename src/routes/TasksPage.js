@@ -63,8 +63,42 @@ export default function TasksPage() {
           />
         ))
       );
-      setDevelopmentTasks(tasks.development.map((development) => development));
-      setDoneTasks(tasks.done.map((done) => done));
+      setDevelopmentTasks(
+        tasks.development.map((development) => (
+          <TaskCard
+            id={development.id}
+            number={development.number}
+            name={development.name}
+            desc={development.desc}
+            creationDate={development.creationDate}
+            duration={development.duration}
+            endDate={development.endDate}
+            priority={development.priority}
+            files={development.files}
+            status={development.status}
+            subTasks={development.subTasks}
+            comments={development.comments}
+          />
+        ))
+      );
+      setDoneTasks(
+        tasks.done.map((done) => (
+          <TaskCard
+            id={done.id}
+            number={done.number}
+            name={done.name}
+            desc={done.desc}
+            creationDate={done.creationDate}
+            duration={done.duration}
+            endDate={done.endDate}
+            priority={done.priority}
+            files={done.files}
+            status={done.status}
+            subTasks={done.subTasks}
+            comments={done.comments}
+          />
+        ))
+      );
     } catch (error) {
       console.error(error);
     }
