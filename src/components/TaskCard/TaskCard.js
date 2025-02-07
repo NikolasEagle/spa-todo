@@ -2,21 +2,78 @@ import styles from "./TaskCard.module.scss";
 import { useContext } from "react";
 import { TasksPageContext } from "../../routes/TasksPage";
 
-export default function TaskCard({ id, number, name, status }) {
+export default function TaskCard({
+  id,
+  number,
+  name,
+  desc,
+  creationDate,
+  duration,
+  endDate,
+  priority,
+  files,
+  status,
+  subTasks,
+  comments,
+}) {
   const context = useContext(TasksPageContext);
 
-  const { setTitlePopup, setOpenedPopup, setTaskId, setTaskName } = context;
+  const {
+    setTitlePopup,
+    setOpenedPopup,
+    setTaskId,
+    setTaskNumber,
+    setTaskName,
+
+    setDesc,
+
+    setTaskCreationDate,
+
+    setTaskDuration,
+
+    setTaskEndDate,
+
+    setTaskPriority,
+
+    setFiles,
+
+    setTaskStatus,
+
+    setSubTasks,
+
+    setComments,
+  } = context;
   const editHandleOnclick = (event) => {
     setTitlePopup(`Редактировать задачу "${number}"`);
     setTaskId(id);
+    setTaskNumber(number);
     setTaskName(name);
+    setDesc(desc);
+    setTaskCreationDate(creationDate);
+    setTaskDuration(duration);
+    setTaskEndDate(endDate);
+    setTaskPriority(priority);
+    setFiles(files);
+    setTaskStatus(status);
+    setSubTasks(subTasks);
+    setComments(comments);
     setOpenedPopup(true);
   };
 
   const deleteHandleOnclick = (event) => {
     setTitlePopup(`Удалить задачу "${number}"`);
     setTaskId(id);
+    setTaskNumber(number);
     setTaskName(name);
+    setDesc(desc);
+    setTaskCreationDate(creationDate);
+    setTaskDuration(duration);
+    setTaskEndDate(endDate);
+    setTaskPriority(priority);
+    setFiles(files);
+    setTaskStatus(status);
+    setSubTasks(subTasks);
+    setComments(comments);
     setOpenedPopup(true);
   };
 
@@ -32,8 +89,20 @@ export default function TaskCard({ id, number, name, status }) {
       </div>
 
       <div className={styles.buttonPanel}>
-        <button>Редактировать</button>
-        <button>Удалить</button>
+        <button
+          onClick={(event) => {
+            editHandleOnclick;
+          }}
+        >
+          Редактировать
+        </button>
+        <button
+          onClick={(event) => {
+            deleteHandleOnclick;
+          }}
+        >
+          Удалить
+        </button>
       </div>
     </div>
   );

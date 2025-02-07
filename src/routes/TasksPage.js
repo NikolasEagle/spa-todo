@@ -28,6 +28,15 @@ export default function TasksPage() {
   const [taskId, setTaskId] = useState("");
   const [taskNumber, setTaskNumber] = useState("");
   const [taskName, setTaskName] = useState("");
+  const [taskDesc, setDesc] = useState("");
+  const [taskCreationDate, setTaskCreationDate] = useState("");
+  const [taskDuration, setTaskDuration] = useState("");
+  const [taskEndDate, setTaskEndDate] = useState("");
+  const [taskPriority, setTaskPriority] = useState("");
+  const [files, setFiles] = useState([]);
+  const [taskStatus, setTaskStatus] = useState("");
+  const [subTasks, setSubTasks] = useState([]);
+  const [comments, setComments] = useState([]);
 
   async function getTasks() {
     try {
@@ -71,6 +80,24 @@ export default function TasksPage() {
         setTaskNumber,
         taskName,
         setTaskName,
+        taskDesc,
+        setDesc,
+        taskCreationDate,
+        setTaskCreationDate,
+        taskDuration,
+        setTaskDuration,
+        taskEndDate,
+        setTaskEndDate,
+        taskPriority,
+        setTaskPriority,
+        files,
+        setFiles,
+        taskStatus,
+        setTaskStatus,
+        subTasks,
+        setSubTasks,
+        comments,
+        setComments,
         getTasks,
       }}
     >
