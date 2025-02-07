@@ -53,7 +53,9 @@ export default function Popup({ opened, title, id, type }) {
             onClick={() => {
               setOpenedPopup(false);
               document.querySelector("form").reset();
-              document.querySelector("select").value = "";
+              if (document.querySelector("select")) {
+                document.querySelector("select").value = "";
+              }
             }}
           >
             Закрыть

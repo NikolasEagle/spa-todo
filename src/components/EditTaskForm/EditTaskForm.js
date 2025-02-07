@@ -11,6 +11,7 @@ export default function EditTaskForm({ id }) {
     projectName,
     getProjects,
     taskNumber,
+    taskId,
     taskName,
     taskDesc,
     taskCreationDate,
@@ -22,6 +23,7 @@ export default function EditTaskForm({ id }) {
     subTasks,
     comments,
     projectId,
+    getTasks,
   } = context;
 
   const [valueName, setValueName] = useState(taskName);
@@ -44,7 +46,19 @@ export default function EditTaskForm({ id }) {
       JSON.stringify(
         projectsStorage.map((project) => {
           if (project.id === projectId) {
+            project.tasks.queue.map((queue) => {
+              if (queue.id === taskId) {
+                queue.name = new FormData(event.target).get("name");
+
+                queue.desc = new FormData(event.target).get("desc");
+
+                queue.priority = new FormData(event.target).get("priority");
+              }
+
+              return queue;
+            });
           }
+          return project;
         })
       )
     );
@@ -57,7 +71,7 @@ export default function EditTaskForm({ id }) {
 
     setValuePriority("");
 
-    getProjects();
+    getTasks();
 
     event.target.reset();
   }
@@ -80,7 +94,7 @@ export default function EditTaskForm({ id }) {
       <textarea
         value={valueDesc}
         onChange={(event) => setValueDesc(event.target.value)}
-        name="name"
+        name="desc"
         placeholder="Описание"
         autoComplete="off"
         required
@@ -88,9 +102,7 @@ export default function EditTaskForm({ id }) {
       <p>
         <b>Дата создания:</b> {taskCreationDate}
       </p>
-      <p>
-        <b>Время в работе:</b> {taskDuration}
-      </p>
+      {taskStatus === "В работе" && <p>В работе: {taskDuration}</p>}
       {taskStatus === "Выполнено" && <p>Дата выполнения: {taskEndDate}</p>}
       <select
         onChange={(event) => setValuePriority(event.target.value)}
@@ -107,7 +119,7 @@ export default function EditTaskForm({ id }) {
         <option value={"Низкий"}>Низкий</option>
       </select>
       <div>
-        <b>Файлы:</b>
+        <b>Файлы:</b>{" "}
         {files.map((file) => {
           return <div>{file}</div>;
         })}
