@@ -140,6 +140,12 @@ export default function TasksPage() {
         setSubTasks,
         comments,
         setComments,
+        queueTasks,
+        setQueueTasks,
+        developmentTasks,
+        setDevelopmentTasks,
+        doneTasks,
+        setDoneTasks,
         getTasks,
       }}
     >

@@ -34,7 +34,7 @@ export default function EditTaskForm({ id }) {
     setValueName(taskName);
     setValueDesc(taskDesc);
     setValuePriority(taskPriority);
-  }, [taskName, taskDesc]);
+  }, [taskName, taskDesc, taskPriority]);
 
   async function editProject(event) {
     event.preventDefault();
