@@ -90,9 +90,9 @@ export default function TaskCard({
       <div className={styles.buttonPanel}>
         <h6>{creationDate}</h6>
         <button
-        /*onClick={(event) => {
-            editHandleOnclick;
-          }}*/
+          onClick={(event) => {
+            editHandleOnclick(event);
+          }}
         >
           Редактировать
         </button>

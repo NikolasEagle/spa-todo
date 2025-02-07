@@ -66,8 +66,6 @@ export default function CreateTaskForm() {
     getTasks();
 
     event.target.reset();
-
-    event.target.querySelector("select").value = "";
   }
 
   return (

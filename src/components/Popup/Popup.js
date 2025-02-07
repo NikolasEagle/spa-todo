@@ -8,6 +8,7 @@ import DeleteProjectForm from "../DeleteProjectForm/DeleteProjectForm";
 import { ProjectPageContext } from "../../routes/ProjectsPage";
 
 import CreateTaskForm from "../CreateTaskForm/CreateTaskForm";
+import EditTaskForm from "../EditTaskForm/EditTaskForm";
 import { TasksPageContext } from "../../routes/TasksPage";
 
 export default function Popup({ opened, title, id, type }) {
@@ -33,9 +34,9 @@ export default function Popup({ opened, title, id, type }) {
       setContent(<DeleteProjectForm id={id} />);
     } else if (title === "Создать задачу") {
       setContent(<CreateTaskForm id={id} />);
-    } /*else if (/^Редактировать задачу/g.test(title)) {
+    } else if (/^Редактировать задачу/g.test(title)) {
       setContent(<EditTaskForm id={id} />);
-    } else if (/^Удалить задачу/g.test(title)) {
+    } /*else if (/^Удалить задачу/g.test(title)) {
       setContent(<DeleteTaskForm id={id} />);
     }*/
   }, [opened, title, id]);
@@ -51,6 +52,8 @@ export default function Popup({ opened, title, id, type }) {
           <button
             onClick={() => {
               setOpenedPopup(false);
+              document.querySelector("form").reset();
+              document.querySelector("select").value = "";
             }}
           >
             Закрыть

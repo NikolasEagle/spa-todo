@@ -36,6 +36,8 @@ export default function EditProjectForm({ id }) {
     setValue("");
 
     getProjects();
+
+    event.target.reset();
   }
 
   return (
