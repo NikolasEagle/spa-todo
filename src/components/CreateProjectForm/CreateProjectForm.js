@@ -21,6 +21,8 @@ export default function CreateProjectForm() {
           id: nanoid(),
 
           name: new FormData(event.target).get("name"),
+
+          tasks: { queue: [], development: [], done: [] },
         },
         ...projectsStorage,
       ])

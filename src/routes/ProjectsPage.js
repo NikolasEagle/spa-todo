@@ -52,7 +52,7 @@ export default function ProjectsPage() {
     >
       <div className={styles.ProjectsPage}>
         <Header title={"Проекты"} />
-        <Main content={projects} />
+        <Main content={projects} type={"projects"} />
       </div>
       <Popup
         opened={openedPopup}
