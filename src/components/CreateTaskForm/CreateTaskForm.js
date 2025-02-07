@@ -19,7 +19,7 @@ export default function CreateTaskForm() {
     console.log(event.target.querySelector('input[type="file"]').files);
 
     const projects = JSON.parse(localStorage.getItem("projects")).map(
-      (project, index) => {
+      (project) => {
         if (project.id === projectId) {
           project.tasks.queue = [
             {

@@ -97,9 +97,9 @@ export default function TaskCard({
           Редактировать
         </button>
         <button
-        /*onClick={(event) => {
-            deleteHandleOnclick;
-          }}*/
+          onClick={(event) => {
+            deleteHandleOnclick(event);
+          }}
         >
           Удалить
         </button>

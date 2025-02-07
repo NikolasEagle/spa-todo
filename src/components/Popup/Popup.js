@@ -9,6 +9,7 @@ import { ProjectPageContext } from "../../routes/ProjectsPage";
 
 import CreateTaskForm from "../CreateTaskForm/CreateTaskForm";
 import EditTaskForm from "../EditTaskForm/EditTaskForm";
+import DeleteTaskForm from "../DeleteTaskForm/DeleteTaskForm";
 import { TasksPageContext } from "../../routes/TasksPage";
 
 export default function Popup({ opened, title, id, type }) {
@@ -36,9 +37,9 @@ export default function Popup({ opened, title, id, type }) {
       setContent(<CreateTaskForm id={id} />);
     } else if (/^Редактировать задачу/g.test(title)) {
       setContent(<EditTaskForm id={id} />);
-    } /*else if (/^Удалить задачу/g.test(title)) {
+    } else if (/^Удалить задачу/g.test(title)) {
       setContent(<DeleteTaskForm id={id} />);
-    }*/
+    }
   }, [opened, title, id]);
 
   return (
@@ -53,7 +54,7 @@ export default function Popup({ opened, title, id, type }) {
             onClick={() => {
               setOpenedPopup(false);
               document.querySelector("form").reset();
-              if (document.querySelector("select")) {
+              if (type === "tasks") {
                 document.querySelector("select").value = "";
               }
             }}
