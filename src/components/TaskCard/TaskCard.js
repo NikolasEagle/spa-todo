@@ -76,9 +76,8 @@ export default function TaskCard({
     setComments(comments);
     setOpenedPopup(true);
   };
-
   return (
-    <div id={id} className={styles.TaskCard}>
+    <draggable draggable id={id} className={styles.TaskCard}>
       <div className={styles.top}>
         <h4>№ {number}</h4>
         <h5>{status}</h5>
@@ -105,6 +104,6 @@ export default function TaskCard({
           Удалить
         </button>
       </div>
-    </div>
+    </draggable>
   );
 }
