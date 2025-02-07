@@ -26,6 +26,7 @@ export default function TasksPage() {
   const [openedPopup, setOpenedPopup] = useState(false);
   const [titlePopup, setTitlePopup] = useState("");
   const [taskId, setTaskId] = useState("");
+  const [taskNumber, setTaskNumber] = useState("");
   const [taskName, setTaskName] = useState("");
 
   async function getTasks() {
@@ -35,7 +36,16 @@ export default function TasksPage() {
       const currProject = projects.find((project) => project.id === projectId);
 
       const tasks = currProject.tasks;
-      setQueueTasks(tasks.queue.map((queue) => <TaskCard />));
+      setQueueTasks(
+        tasks.queue.map((queue) => (
+          <TaskCard
+            id={queue.id}
+            number={queue.number}
+            name={queue.number}
+            status={queue.status}
+          />
+        ))
+      );
       setDevelopmentTasks(tasks.development.map((development) => development));
       setDoneTasks(tasks.done.map((done) => done));
     } catch (error) {
@@ -57,6 +67,8 @@ export default function TasksPage() {
         setTitlePopup,
         taskId,
         setTaskId,
+        taskNumber,
+        setTaskNumber,
         taskName,
         setTaskName,
         getTasks,
