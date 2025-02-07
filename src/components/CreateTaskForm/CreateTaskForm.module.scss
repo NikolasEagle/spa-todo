@@ -1,0 +1,17 @@
+.CreateTaskForm {
+  width: calc(100% - 30px);
+
+  padding: 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+
+  background: pink;
+
+  textarea {
+    resize: none;
+  }
+}

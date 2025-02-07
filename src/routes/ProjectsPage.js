@@ -59,6 +59,7 @@ export default function ProjectsPage() {
         title={titlePopup}
         id={projectId}
         name={projectName}
+        type={"projects"}
       />
     </ProjectPageContext.Provider>
   );

@@ -7,10 +7,20 @@ import EditProjectForm from "../EditProjectForm/EditProjectForm";
 import DeleteProjectForm from "../DeleteProjectForm/DeleteProjectForm";
 import { ProjectPageContext } from "../../routes/ProjectsPage";
 
-export default function Popup({ opened, title, id }) {
-  const context = useContext(ProjectPageContext);
+import CreateTaskForm from "../CreateTaskForm/CreateTaskForm";
+import { TasksPageContext } from "../../routes/TasksPage";
 
-  const { setOpenedPopup } = context;
+export default function Popup({ opened, title, id, type }) {
+  const contextProjects = useContext(ProjectPageContext);
+  const contextTasks = useContext(TasksPageContext);
+
+  let setOpenedPopup;
+
+  if (type === "projects") {
+    setOpenedPopup = contextProjects.setOpenedPopup;
+  } else {
+    setOpenedPopup = contextTasks.setOpenedPopup;
+  }
 
   const [content, setContent] = useState();
 
@@ -21,9 +31,9 @@ export default function Popup({ opened, title, id }) {
       setContent(<EditProjectForm id={id} />);
     } else if (/^Удалить проект/g.test(title)) {
       setContent(<DeleteProjectForm id={id} />);
-    } /*else if (title === "Создать задачу") {
+    } else if (title === "Создать задачу") {
       setContent(<CreateTaskForm id={id} />);
-    }*/
+    }
   }, [opened, title, id]);
 
   return (
@@ -34,7 +44,13 @@ export default function Popup({ opened, title, id }) {
       <div className={styles.window}>
         <div className={styles.top}>
           <h3>{title}</h3>
-          <button onClick={() => setOpenedPopup(false)}>Закрыть</button>
+          <button
+            onClick={() => {
+              setOpenedPopup(false);
+            }}
+          >
+            Закрыть
+          </button>
         </div>
         <div className={styles.content}>{content}</div>
       </div>

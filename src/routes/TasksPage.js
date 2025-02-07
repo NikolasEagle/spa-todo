@@ -6,6 +6,8 @@ import Main from "../components/Main/Main";
 
 import TaskCard from "../components/TaskCard/TaskCard";
 
+import Popup from "../components/Popup/Popup";
+
 import { useParams } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import CreateTaskCard from "../components/CreateTaskCard/CreateTaskCard";
@@ -47,8 +49,8 @@ export default function TasksPage() {
 
   return (
     <TasksPageContext.Provider
-      value={
-        (projectId,
+      value={{
+        projectId,
         openedPopup,
         setOpenedPopup,
         titlePopup,
@@ -57,8 +59,8 @@ export default function TasksPage() {
         setTaskId,
         taskName,
         setTaskName,
-        getTasks)
-      }
+        getTasks,
+      }}
     >
       <div className={styles.TasksPage}>
         <Header title={`Проект "${projectName}"`} />
@@ -73,6 +75,13 @@ export default function TasksPage() {
           type={"tasks"}
         />
       </div>
+      <Popup
+        opened={openedPopup}
+        title={titlePopup}
+        id={projectId}
+        name={projectName}
+        type={"tasks"}
+      />
     </TasksPageContext.Provider>
   );
 }
