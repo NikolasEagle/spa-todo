@@ -16,6 +16,8 @@ export default function CreateTaskForm() {
 
     const currDate = new Date();
 
+    console.log(event.target.querySelector('input[type="file"]').files);
+
     const projects = JSON.parse(localStorage.getItem("projects")).map(
       (project, index) => {
         if (project.id === projectId) {
@@ -35,14 +37,15 @@ export default function CreateTaskForm() {
                 currDate.getMonth() + 1
               )}.${convertNum(currDate.getFullYear())}`,
 
-              duration: null,
+              duration: 0,
 
               endDate: null,
 
               priority: new FormData(event.target).get("priority"),
 
-              files: [],
-
+              files: [
+                ...event.target.querySelector('input[type="file"]').files,
+              ].map((file) => file.name),
               status: "В очереди",
 
               subTasks: [],
@@ -92,6 +95,8 @@ export default function CreateTaskForm() {
         <option value={"Средний"}>Средний</option>
         <option value={"Низкий"}>Низкий</option>
       </select>
+      <input name="files" type="file" multiple="multiple" />
+
       <button type="submit">Создать</button>
     </form>
   );
