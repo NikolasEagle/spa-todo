@@ -23,7 +23,17 @@ export default function Search() {
   useEffect(() => {
     setQueueTasks(
       queueTasks.filter((queue) => {
-        if (queue.props.name.slice(0, searchValue.length) === searchValue) {
+        if (
+          queue.props.name.slice(0, searchValue.length).toUpperCase() ===
+          searchValue.toUpperCase()
+        ) {
+          return true;
+        }
+        if (
+          String(queue.props.number)
+            .slice(0, searchValue.length)
+            .toUpperCase() === searchValue.toUpperCase()
+        ) {
           return true;
         }
         return false;
@@ -33,7 +43,15 @@ export default function Search() {
     setDevelopmentTasks(
       developmentTasks.filter((development) => {
         if (
-          development.props.name.slice(0, searchValue.length) === searchValue
+          development.props.name.slice(0, searchValue.length).toUpperCase() ===
+          searchValue.toUpperCase()
+        ) {
+          return true;
+        }
+        if (
+          String(development.props.number)
+            .slice(0, searchValue.length)
+            .toUpperCase() === searchValue.toUpperCase()
         ) {
           return true;
         }
@@ -43,7 +61,17 @@ export default function Search() {
 
     setDoneTasks(
       doneTasks.filter((done) => {
-        if (done.props.name.slice(0, searchValue.length) === searchValue) {
+        if (
+          done.props.name.slice(0, searchValue.length).toUpperCase() ===
+          searchValue.toUpperCase()
+        ) {
+          return true;
+        }
+        if (
+          String(done.props.number)
+            .slice(0, searchValue.length)
+            .toUpperCase() === searchValue.toUpperCase()
+        ) {
           return true;
         }
         return false;
@@ -59,7 +87,7 @@ export default function Search() {
     <div className={styles.Search}>
       <input
         autoFocus
-        onChange={(event) => {
+        onInput={(event) => {
           getTasks();
           setSearchValue(event.target.value);
         }}
