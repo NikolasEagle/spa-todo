@@ -45,6 +45,7 @@ export default function TasksPage() {
       const currProject = projects.find((project) => project.id === projectId);
 
       const tasks = currProject.tasks;
+
       setQueueTasks(
         tasks.queue.map((queue) => (
           <TaskCard
