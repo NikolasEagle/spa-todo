@@ -1,3 +1,12 @@
+@keyframes show-up {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .ProjectCard {
   width: calc(100% - 15px * 2);
 
@@ -11,28 +20,65 @@
 
   padding: 15px;
 
-  cursor: pointer;
-
-  .h3 {
-    margin: 0;
-  }
-
   .window {
     display: flex;
 
-    justify-content: flex-end;
-
-    flex-wrap: wrap;
+    flex-direction: column;
 
     gap: 15px;
 
+    .edit {
+      font-size: 28px;
+      background: none;
+      color: #555;
+      &:hover,
+      &:focus {
+        text-shadow: 0 0 15px #555;
+        box-shadow: 0 0 0 #555;
+      }
+    }
+
+    button {
+      cursor: pointer;
+
+      width: 40px;
+
+      height: 40px;
+
+      background: #555;
+
+      outline: none;
+
+      border: none;
+
+      border-radius: 15px;
+
+      transition: 0.5s;
+
+      font-size: 15px;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px #555;
+      }
+    }
+
     .name {
       cursor: pointer;
-      width: 100%;
+
+      display: flex;
+
+      gap: 5px;
+
       h3 {
         margin: 0;
         word-break: break-all;
-        color: #555;
+        color: #ccc;
+
+        background: red;
+
+        font-size: 28px;
 
         span {
           color: #ffffff;
@@ -44,15 +90,25 @@
       display: flex;
       gap: 15px;
 
-      width: 185px;
+      justify-content: space-between;
+
+      .navigate {
+        width: max-content;
+        color: #fff;
+        padding: 0 15px;
+        font-size: 12px;
+      }
+      .del {
+        color: red;
+        padding: 0;
+        font-size: 30px;
+        background: none;
+        &:hover,
+        &:focus {
+          text-shadow: 0 0 15px red;
+          box-shadow: 0 0 0 #555;
+        }
+      }
     }
-  }
-
-  transition: 0.5s;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.02);
-    background: #333;
   }
 }

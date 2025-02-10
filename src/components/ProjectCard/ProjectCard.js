@@ -25,37 +25,38 @@ export default function ProjectCard({ id, name }) {
   };
 
   return (
-    <div
-      id={id}
-      className={styles.ProjectCard}
-      onClick={() => {
-        navigate(`/${id}/${name}`);
-      }}
-      tabIndex={0}
-    >
+    <div id={id} className={styles.ProjectCard}>
       <div className={styles.window}>
         <div className={styles.name}>
-          <h3>
-            Проект <span>{name}</span>
-          </h3>
-        </div>
-
-        <div className={styles.buttonPanel}>
+          <h3>{name}</h3>
           <button
+            className={styles.edit}
             onClick={(event) => {
               event.stopPropagation();
               editHandleOnclick(event);
             }}
           >
-            Редактировать
+            &#10000;
+          </button>
+        </div>
+
+        <div className={styles.buttonPanel}>
+          <button
+            className={styles.navigate}
+            onClick={() => {
+              navigate(`/${id}/${name}`);
+            }}
+          >
+            Перейти к задачам
           </button>
           <button
+            className={styles.del}
             onClick={(event) => {
               event.stopPropagation();
               deleteHandleOnclick(event);
             }}
           >
-            Удалить
+            &#10006;
           </button>
         </div>
       </div>
