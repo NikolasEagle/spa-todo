@@ -14,13 +14,32 @@
   align-items: center;
 
   .window {
-    background: #ffffff;
+    background: #333;
+
+    color: #ccc;
 
     border-radius: 15px;
 
     display: flex;
 
     flex-direction: column;
+
+    .close {
+      cursor: pointer;
+      outline: none;
+      border: none;
+      color: #777;
+      padding: 0;
+      font-size: 25px;
+      background: none;
+      transition: 0.5s;
+      &:hover,
+      &:focus {
+        text-shadow: 0 0 15px #777;
+        box-shadow: 0 0 0 #555;
+        transform: scale(1.02);
+      }
+    }
 
     .top {
       display: flex;
@@ -31,7 +50,7 @@
 
       align-items: center;
 
-      padding: 15px;
+      padding: 15px 15px 0 15px;
 
       h3 {
         margin: 0;

@@ -8,6 +8,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input {
+  padding: 15px;
+  border-radius: 15px;
+  background: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  border: solid #555 2px;
+  transition: 0.5s;
+  &:focus,
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px #555;
+  }
+}
+
 #root {
   display: flex;
 

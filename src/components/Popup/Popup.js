@@ -51,6 +51,7 @@ export default function Popup({ opened, title, id, type }) {
         <div className={styles.top}>
           <h3>{title}</h3>
           <button
+            className={styles.close}
             onClick={() => {
               setOpenedPopup(false);
               document.querySelector("form").reset();
@@ -59,7 +60,7 @@ export default function Popup({ opened, title, id, type }) {
               }
             }}
           >
-            Закрыть
+            &#10006;
           </button>
         </div>
         <div className={styles.content}>{content}</div>

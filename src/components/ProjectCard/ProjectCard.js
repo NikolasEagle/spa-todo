@@ -11,14 +11,14 @@ export default function ProjectCard({ id, name }) {
   const { setTitlePopup, setOpenedPopup, setProjectId, setProjectName } =
     context;
   const editHandleOnclick = (event) => {
-    setTitlePopup(`Редактировать проект "${name}"`);
+    setTitlePopup(`Редактировать проект - ${name}`);
     setProjectId(id);
     setProjectName(name);
     setOpenedPopup(true);
   };
 
   const deleteHandleOnclick = (event) => {
-    setTitlePopup(`Удалить проект "${name}"`);
+    setTitlePopup(`Удалить проект - ${name}`);
     setProjectId(id);
     setProjectName(name);
     setOpenedPopup(true);
