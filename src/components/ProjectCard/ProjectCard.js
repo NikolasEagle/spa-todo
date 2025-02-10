@@ -25,23 +25,36 @@ export default function ProjectCard({ id, name }) {
   };
 
   return (
-    <div id={id} className={styles.ProjectCard}>
+    <div
+      id={id}
+      className={styles.ProjectCard}
+      onClick={() => {
+        navigate(`/${id}/${name}`);
+      }}
+      tabIndex={0}
+    >
       <div className={styles.window}>
-        <div
-          onClick={() => {
-            navigate(`/${id}/${name}`);
-          }}
-          tabIndex={0}
-          className={styles.name}
-        >
-          <h3>{name}</h3>
+        <div className={styles.name}>
+          <h3>
+            Проект <span>{name}</span>
+          </h3>
         </div>
 
         <div className={styles.buttonPanel}>
-          <button onClick={(event) => editHandleOnclick(event)}>
+          <button
+            onClick={(event) => {
+              event.stopPropagation();
+              editHandleOnclick(event);
+            }}
+          >
             Редактировать
           </button>
-          <button onClick={(event) => deleteHandleOnclick(event)}>
+          <button
+            onClick={(event) => {
+              event.stopPropagation();
+              deleteHandleOnclick(event);
+            }}
+          >
             Удалить
           </button>
         </div>
