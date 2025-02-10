@@ -1,5 +1,5 @@
 import styles from "./TaskCard.module.scss";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { TasksPageContext } from "../../routes/TasksPage";
 
 export default function TaskCard({
@@ -43,6 +43,18 @@ export default function TaskCard({
 
     setComments,
   } = context;
+
+  useEffect(() => {
+    const tasks = document.querySelectorAll("draggable");
+
+    for (let task of tasks) {
+      task.addEventListener("dragstart", (event) => {
+        localStorage.setItem("drag_id", event.target.id);
+        localStorage.setItem("drag_status", event.target.dataset.status);
+      });
+    }
+  });
+
   const editHandleOnclick = (event) => {
     setTitlePopup(`Редактировать задачу "${number}"`);
     setTaskId(id);
@@ -77,7 +89,12 @@ export default function TaskCard({
     setOpenedPopup(true);
   };
   return (
-    <draggable draggable id={id} className={styles.TaskCard}>
+    <draggable
+      id={id}
+      data-status={status}
+      draggable
+      className={styles.TaskCard}
+    >
       <div className={styles.top}>
         <h4>№ {number}</h4>
         <h5>{status}</h5>

@@ -161,6 +161,7 @@ export default function TasksPage() {
             done: doneTasks,
           }}
           type={"tasks"}
+          projectId={projectId}
         />
       </div>
       <Popup
