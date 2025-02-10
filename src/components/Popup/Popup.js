@@ -54,7 +54,7 @@ export default function Popup({ opened, title, id, type }) {
             onClick={() => {
               setOpenedPopup(false);
               document.querySelector("form").reset();
-              if (type === "tasks") {
+              if (type === "tasks" && !/^Удалить задачу/g.test(title)) {
                 document.querySelector("select").value = "";
               }
             }}

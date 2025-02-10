@@ -38,6 +38,8 @@ export default function TasksPage() {
   const [subTasks, setSubTasks] = useState([]);
   const [comments, setComments] = useState([]);
 
+  const [intervalID, setIntervalID] = useState();
+
   async function getTasks() {
     try {
       const projects = JSON.parse(localStorage.getItem("projects"));
@@ -147,6 +149,8 @@ export default function TasksPage() {
         setDevelopmentTasks,
         doneTasks,
         setDoneTasks,
+        intervalID,
+        setIntervalID,
         getTasks,
       }}
     >

@@ -1,13 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import styles from "./EditTaskForm.module.scss";
 
 import { TasksPageContext } from "../../routes/TasksPage";
+
+const convertNum = (num) => (num < 10 ? `0${num}` : `${num}`);
 
 export default function EditTaskForm({ id }) {
   const context = useContext(TasksPageContext);
 
   const {
     setOpenedPopup,
+    openedPopup,
     projectName,
     getProjects,
     taskNumber,
@@ -15,7 +18,9 @@ export default function EditTaskForm({ id }) {
     taskName,
     taskDesc,
     taskCreationDate,
+    setTaskCreationDate,
     taskDuration,
+    setTaskDuration,
     taskEndDate,
     taskPriority,
     files,
@@ -23,6 +28,8 @@ export default function EditTaskForm({ id }) {
     subTasks,
     comments,
     projectId,
+    intervalID,
+    setIntervalID,
     getTasks,
   } = context;
 
@@ -30,11 +37,24 @@ export default function EditTaskForm({ id }) {
   const [valueDesc, setValueDesc] = useState(taskDesc);
   const [valuePriority, setValuePriority] = useState(taskPriority);
 
+  const firstRender = useRef(true);
+
   useEffect(() => {
-    setValueName(taskName);
-    setValueDesc(taskDesc);
-    setValuePriority(taskPriority);
-  }, [taskName, taskDesc, taskPriority]);
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else {
+      setValueName(taskName);
+      setValueDesc(taskDesc);
+      setValuePriority(taskPriority);
+      console.log(intervalID);
+      clearInterval(intervalID);
+      setIntervalID(
+        setInterval(() => {
+          setTaskDuration(new Date() - new Date(taskCreationDate));
+        }, 0)
+      );
+    }
+  }, [taskName, taskDesc, taskPriority, taskCreationDate, openedPopup]);
 
   async function editProject(event) {
     event.preventDefault();
@@ -124,10 +144,25 @@ export default function EditTaskForm({ id }) {
         required
       />
       <p>
-        <b>Дата создания:</b> {taskCreationDate}
+        <b>Дата создания:</b>{" "}
+        {`${convertNum(new Date(taskCreationDate).getHours())}:${convertNum(
+          new Date(taskCreationDate).getMinutes()
+        )}:${convertNum(new Date(taskCreationDate).getSeconds())} ${convertNum(
+          new Date(taskCreationDate).getDate()
+        )}.${convertNum(new Date(taskCreationDate).getMonth() + 1)}.${new Date(
+          taskCreationDate
+        ).getFullYear()}`}
       </p>
-      {taskStatus === "В работе" && <p>В работе: {taskDuration}</p>}
-      {taskStatus === "Выполнено" && <p>Дата выполнения: {taskEndDate}</p>}
+      {taskStatus === "В работе" && (
+        <p>
+          <b>В работе:</b> {taskDuration}
+        </p>
+      )}
+      {taskStatus === "Выполнено" && (
+        <p>
+          <b>Дата выполнения:</b> {taskEndDate}
+        </p>
+      )}
       <select
         onChange={(event) => setValuePriority(event.target.value)}
         value={valuePriority}
@@ -142,12 +177,13 @@ export default function EditTaskForm({ id }) {
         <option value={"Средний"}>Средний</option>
         <option value={"Низкий"}>Низкий</option>
       </select>
-      <div>
-        <b>Файлы:</b>{" "}
-        {files.map((file) => {
-          return <div>{file}</div>;
-        })}
-      </div>
+
+      {files.length > 0 ? (
+        <div>
+          <b>Файлы:</b> {files.join(", ")}
+        </div>
+      ) : null}
+
       <p>
         <b>Статус:</b> {taskStatus}
       </p>

@@ -4,8 +4,6 @@ import { TasksPageContext } from "../../routes/TasksPage";
 
 import { nanoid } from "nanoid";
 
-const convertNum = (num) => (num < 10 ? `0${num}` : `${num}`);
-
 export default function CreateTaskForm() {
   const context = useContext(TasksPageContext);
 
@@ -13,8 +11,6 @@ export default function CreateTaskForm() {
 
   async function createProject(event) {
     event.preventDefault();
-
-    const currDate = new Date();
 
     console.log(event.target.querySelector('input[type="file"]').files);
 
@@ -31,13 +27,9 @@ export default function CreateTaskForm() {
 
               desc: new FormData(event.target).get("desc"),
 
-              creationDate: `${convertNum(currDate.getHours())}:${convertNum(
-                currDate.getMinutes()
-              )} ${convertNum(currDate.getDate())}.${convertNum(
-                currDate.getMonth() + 1
-              )}.${convertNum(currDate.getFullYear())}`,
+              creationDate: new Date(),
 
-              duration: 0,
+              duration: null,
 
               endDate: null,
 

@@ -2,6 +2,8 @@ import styles from "./TaskCard.module.scss";
 import { useContext, useEffect } from "react";
 import { TasksPageContext } from "../../routes/TasksPage";
 
+const convertNum = (num) => (num < 10 ? `0${num}` : `${num}`);
+
 export default function TaskCard({
   id,
   number,
@@ -26,7 +28,6 @@ export default function TaskCard({
     setTaskName,
 
     setDesc,
-
     setTaskCreationDate,
 
     setTaskDuration,
@@ -55,6 +56,8 @@ export default function TaskCard({
     }
   });
 
+  let intervalID;
+
   const editHandleOnclick = (event) => {
     setTitlePopup(`Редактировать задачу "${number}"`);
     setTaskId(id);
@@ -62,7 +65,6 @@ export default function TaskCard({
     setTaskName(name);
     setDesc(desc);
     setTaskCreationDate(creationDate);
-    setTaskDuration(duration);
     setTaskEndDate(endDate);
     setTaskPriority(priority);
     setFiles(files);
@@ -79,7 +81,6 @@ export default function TaskCard({
     setTaskName(name);
     setDesc(desc);
     setTaskCreationDate(creationDate);
-    setTaskDuration(duration);
     setTaskEndDate(endDate);
     setTaskPriority(priority);
     setFiles(files);
@@ -105,7 +106,13 @@ export default function TaskCard({
       </div>
 
       <div className={styles.buttonPanel}>
-        <h6>{creationDate}</h6>
+        <h6>{`${convertNum(new Date(creationDate).getHours())}:${convertNum(
+          new Date(creationDate).getMinutes()
+        )}:${convertNum(new Date(creationDate).getSeconds())} ${convertNum(
+          new Date(creationDate).getDate()
+        )}.${convertNum(new Date(creationDate).getMonth() + 1)}.${new Date(
+          creationDate
+        ).getFullYear()}`}</h6>
         <button
           onClick={(event) => {
             editHandleOnclick(event);
