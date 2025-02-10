@@ -69,6 +69,7 @@ export default function Main({ content, type, projectId }) {
                       .reverse();
                   } else if (event.target.id === "doneZone") {
                     dragElement.status = "Выполнено";
+                    dragElement.endDate = new Date();
                     project.tasks.done = [dragElement, ...project.tasks.done]
                       .sort()
                       .reverse();

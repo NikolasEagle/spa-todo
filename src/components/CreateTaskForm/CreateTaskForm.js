@@ -9,6 +9,10 @@ export default function CreateTaskForm() {
 
   const { projectId, setOpenedPopup, getTasks } = context;
 
+  const numberTask = localStorage.getItem(`numberTask_${projectId}`)
+    ? String(Number(localStorage.getItem(`numberTask_${projectId}`)) + 1)
+    : 1;
+
   async function createProject(event) {
     event.preventDefault();
 
@@ -21,7 +25,7 @@ export default function CreateTaskForm() {
             {
               id: nanoid(),
 
-              number: project.tasks.queue.length + 1,
+              number: numberTask,
 
               name: new FormData(event.target).get("name"),
 
@@ -52,6 +56,11 @@ export default function CreateTaskForm() {
     );
 
     localStorage.setItem("projects", JSON.stringify(projects));
+
+    localStorage.setItem(
+      `numberTask_${projectId}`,
+      String(Number(localStorage.getItem(`numberTask_${projectId}`)) + 1)
+    );
 
     setOpenedPopup(false);
 

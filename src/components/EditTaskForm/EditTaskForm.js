@@ -155,12 +155,22 @@ export default function EditTaskForm({ id }) {
       </p>
       {taskStatus === "В работе" && (
         <p>
-          <b>В работе:</b> {taskDuration}
+          <b>В работе:</b> {Math.round(taskDuration / 1000 / 60 / 60 / 24)} д{" "}
+          {Math.round(taskDuration / 1000 / 60 / 60)} ч{" "}
+          {Math.round(taskDuration / 1000 / 60)} мин{" "}
+          {Math.round(taskDuration / 1000)} сек
         </p>
       )}
       {taskStatus === "Выполнено" && (
         <p>
-          <b>Дата выполнения:</b> {taskEndDate}
+          <b>Дата выполнения:</b>{" "}
+          {`${convertNum(new Date(taskEndDate).getHours())}:${convertNum(
+            new Date(taskEndDate).getMinutes()
+          )}:${convertNum(new Date(taskEndDate).getSeconds())} ${convertNum(
+            new Date(taskEndDate).getDate()
+          )}.${convertNum(new Date(taskEndDate).getMonth() + 1)}.${new Date(
+            taskEndDate
+          ).getFullYear()}`}
         </p>
       )}
       <select
