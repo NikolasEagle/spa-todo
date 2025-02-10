@@ -14,9 +14,7 @@
   padding: 15px;
 
   .tasks {
-    background: blue;
     width: calc(100%);
-    height: 100vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,18 +26,12 @@
 
     .queue {
       width: calc(100% / 3 - 15px);
-
-      background: lime;
     }
     .development {
       width: calc(100% / 3 - 15px);
-
-      background: orange;
     }
     .done {
       width: calc(100% / 3 - 15px);
-
-      background: palevioletred;
     }
 
     .queue,
@@ -48,11 +40,12 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      color: #ffffff;
       .header_column {
         margin: 0;
         text-align: center;
         padding: 15px;
-        background: fuchsia;
+        border-bottom: 2px solid #777;
       }
     }
   }

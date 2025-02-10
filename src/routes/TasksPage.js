@@ -155,7 +155,7 @@ export default function TasksPage() {
       }}
     >
       <div className={styles.TasksPage}>
-        <Header title={`Проект "${projectName}"`} />
+        <Header title={`Проект - ${projectName}`} />
         <Search />
         <CreateTaskCard />
         <Main
