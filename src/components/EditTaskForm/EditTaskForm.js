@@ -176,12 +176,12 @@ export default function EditTaskForm({ id }) {
       <select
         onChange={(event) => setValuePriority(event.target.value)}
         value={valuePriority}
-        placeholder="Приоритет"
+        placeholder="Задать приоритет"
         required
         name={"priority"}
       >
         <option value="" disabled selected hidden>
-          Приоритет
+          Задать приоритет
         </option>
         <option value={"Высокий"}>Высокий</option>
         <option value={"Средний"}>Средний</option>
@@ -194,8 +194,18 @@ export default function EditTaskForm({ id }) {
         </div>
       ) : null}
 
-      <p>
-        <b>Статус:</b> {taskStatus}
+      <p style={{ color: "#aaa" }}>
+        <b style={{ color: "#ccc" }}>Статус:</b>{" "}
+        {taskStatus === "В очереди" && (
+          <span style={{ color: "#777" }}>&#9679;</span>
+        )}
+        {taskStatus === "В работе" && (
+          <span style={{ color: "yellow" }}>&#9679;</span>
+        )}
+        {taskStatus === "Выполнено" && (
+          <span style={{ color: "green" }}>&#9679;</span>
+        )}{" "}
+        {taskStatus}
       </p>
       <button type="submit">Сохранить</button>
     </form>

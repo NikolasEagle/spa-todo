@@ -3,6 +3,8 @@
 
   flex-direction: column;
 
+  cursor: pointer;
+
   background: #222;
 
   padding: 15px;
@@ -23,16 +25,77 @@
 
     justify-content: space-between;
 
+    flex-wrap: wrap;
+
+    h4 {
+      padding: 5px;
+
+      font-size: 28px;
+
+      color: #777;
+    }
+
+    h5 {
+      color: #777;
+      font-size: 12px;
+      word-wrap: break-word;
+      word-break: break-all;
+      span {
+        font-size: 18px;
+      }
+    }
+
     .name {
       cursor: pointer;
       width: calc(100% - 15px - 185px);
       background: lime;
     }
   }
-  .buttonPanel {
+
+  .bottom {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .date {
+      color: #777;
+    }
+
+    .buttonPanel {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 15px;
+      .edit {
+        cursor: pointer;
+        color: #555;
+        padding: 0;
+        font-size: 30px;
+        background: none;
+        border: none;
+        transition: 0.5s;
+        &:hover,
+        &:focus {
+          text-shadow: 0 0 15px #555;
+          box-shadow: 0 0 0 #555;
+          transform: scale(1.02);
+        }
+      }
+      .del {
+        cursor: pointer;
+        color: red;
+        padding: 0;
+        font-size: 30px;
+        background: none;
+        border: none;
+        transition: 0.5s;
+        &:hover,
+        &:focus {
+          text-shadow: 0 0 15px red;
+          box-shadow: 0 0 0 #555;
+          transform: scale(1.02);
+        }
+      }
+    }
   }
 }

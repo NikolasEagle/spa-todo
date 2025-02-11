@@ -59,7 +59,7 @@ export default function TaskCard({
   let intervalID;
 
   const editHandleOnclick = (event) => {
-    setTitlePopup(`Редактировать задачу "${number}"`);
+    setTitlePopup(`Редактировать задачу № ${number}`);
     setTaskId(id);
     setTaskNumber(number);
     setTaskName(name);
@@ -75,7 +75,7 @@ export default function TaskCard({
   };
 
   const deleteHandleOnclick = (event) => {
-    setTitlePopup(`Удалить задачу "${number}"`);
+    setTitlePopup(`Удалить задачу № ${number}`);
     setTaskId(id);
     setTaskNumber(number);
     setTaskName(name);
@@ -98,35 +98,52 @@ export default function TaskCard({
     >
       <div className={styles.top}>
         <h4>№ {number}</h4>
-        <h5>{status}</h5>
+        <h5>
+          {status === "В очереди" && (
+            <span style={{ color: "#555" }}>&#9679;</span>
+          )}
+          {status === "В работе" && (
+            <span style={{ color: "yellow" }}>&#9679;</span>
+          )}
+          {status === "Выполнено" && (
+            <span style={{ color: "green" }}>&#9679;</span>
+          )}{" "}
+          {status}
+        </h5>
       </div>
 
       <div className={styles.content}>
         <h5>{name}</h5>
       </div>
+      <div className={styles.bottom}>
+        <div className={styles.date}>
+          <h6>{`${convertNum(new Date(creationDate).getHours())}:${convertNum(
+            new Date(creationDate).getMinutes()
+          )}:${convertNum(new Date(creationDate).getSeconds())} ${convertNum(
+            new Date(creationDate).getDate()
+          )}.${convertNum(new Date(creationDate).getMonth() + 1)}.${new Date(
+            creationDate
+          ).getFullYear()}`}</h6>
+        </div>
 
-      <div className={styles.buttonPanel}>
-        <h6>{`${convertNum(new Date(creationDate).getHours())}:${convertNum(
-          new Date(creationDate).getMinutes()
-        )}:${convertNum(new Date(creationDate).getSeconds())} ${convertNum(
-          new Date(creationDate).getDate()
-        )}.${convertNum(new Date(creationDate).getMonth() + 1)}.${new Date(
-          creationDate
-        ).getFullYear()}`}</h6>
-        <button
-          onClick={(event) => {
-            editHandleOnclick(event);
-          }}
-        >
-          Редактировать
-        </button>
-        <button
-          onClick={(event) => {
-            deleteHandleOnclick(event);
-          }}
-        >
-          Удалить
-        </button>
+        <div className={styles.buttonPanel}>
+          <button
+            className={styles.edit}
+            onClick={(event) => {
+              editHandleOnclick(event);
+            }}
+          >
+            &#10000;
+          </button>
+          <button
+            className={styles.del}
+            onClick={(event) => {
+              deleteHandleOnclick(event);
+            }}
+          >
+            &#10006;
+          </button>
+        </div>
       </div>
     </draggable>
   );

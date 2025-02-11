@@ -26,12 +26,20 @@ textarea {
 }
 
 select {
-  padding: 15px 50px 15px 15px;
   border-radius: 15px;
+  border: 1px solid #ccc;
+  padding: 2px;
   background: none;
   color: #fff;
   outline: none;
   cursor: pointer;
+  box-sizing: border-box;
+  option {
+    background: #555;
+    &:hover {
+      background: red;
+    }
+  }
 }
 
 #root {
