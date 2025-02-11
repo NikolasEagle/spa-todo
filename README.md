@@ -5,3 +5,5 @@
 https://samara.hh.ru/resume/e3ab83abff0855b8760039ed1f53564e347835
 
 Ссылка на развернутое приложение:
+
+http://b987439i.beget.tech/
