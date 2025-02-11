@@ -98,16 +98,7 @@ export default function CreateTaskForm() {
         <option value={"Средний"}>Средний</option>
         <option value={"Низкий"}>Низкий</option>
       </select>
-      <input
-        id="file-upload"
-        name="files"
-        type="file"
-        multiple="multiple"
-        style={{ display: "none" }}
-      />
-      <label for="file-upload" class="custom-file-upload">
-        Выбрать файл
-      </label>
+      <input id="upload-photo" name="files" type="file" multiple="multiple" />
       <button type="submit">Создать</button>
     </form>
   );

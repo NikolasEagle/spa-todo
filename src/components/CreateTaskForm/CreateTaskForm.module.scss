@@ -9,14 +9,13 @@
 
   gap: 15px;
 
-  .custom-file-upload {
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    /* Придаём input файлу облик обычной кнопки */
+  input[type="file"] {
+    border-radius: 0;
+    border: none;
+    &:hover {
+      transform: scale(1);
+      box-shadow: 0 0 0 red;
+    }
   }
 
   button {
