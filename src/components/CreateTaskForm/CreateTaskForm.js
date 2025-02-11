@@ -91,7 +91,7 @@ export default function CreateTaskForm() {
         required
       />
       <select placeholder="Задать приоритет" required name={"priority"}>
-        <option style={{ color: "#555" }} value="" disabled selected hidden>
+        <option value="" disabled selected hidden>
           Задать приоритет
         </option>
         <option value={"Высокий"}>Высокий</option>

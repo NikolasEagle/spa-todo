@@ -1,9 +1,9 @@
 .Popup {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
 
-  height: 100vh;
+  min-height: 100vh;
 
   background: rgba($color: #000000, $alpha: 0.5);
 
@@ -54,6 +54,9 @@
 
       h3 {
         margin: 0;
+        font-size: 18px;
+        padding: 5px;
+        color: #fff;
       }
     }
   }

@@ -127,6 +127,9 @@ export default function EditTaskForm({ id }) {
         editProject(event);
       }}
     >
+      <label htmlFor="name" style={{ width: "100%" }}>
+        <b>Наименование:</b>
+      </label>
       <input
         value={valueName}
         onChange={(event) => setValueName(event.target.value)}
@@ -135,6 +138,9 @@ export default function EditTaskForm({ id }) {
         autoComplete="off"
         required
       />
+      <label htmlFor="desc" style={{ width: "100%" }}>
+        <b>Описание:</b>
+      </label>
       <textarea
         value={valueDesc}
         onChange={(event) => setValueDesc(event.target.value)}
@@ -155,10 +161,7 @@ export default function EditTaskForm({ id }) {
       </p>
       {taskStatus === "В работе" && (
         <p>
-          <b>В работе:</b> {Math.round(taskDuration / 1000 / 60 / 60 / 24)} д{" "}
-          {Math.round(taskDuration / 1000 / 60 / 60)} ч{" "}
-          {Math.round(taskDuration / 1000 / 60)} мин{" "}
-          {Math.round(taskDuration / 1000)} сек
+          <b>В работе:</b> {Math.round(taskDuration / 1000 / 60 / 60)} ч
         </p>
       )}
       {taskStatus === "Выполнено" && (
@@ -173,7 +176,11 @@ export default function EditTaskForm({ id }) {
           ).getFullYear()}`}
         </p>
       )}
+      <label style={{ width: "100%" }} htmlFor="priority">
+        <b>Приоритет:</b>
+      </label>
       <select
+        id="priority"
         onChange={(event) => setValuePriority(event.target.value)}
         value={valuePriority}
         placeholder="Задать приоритет"
