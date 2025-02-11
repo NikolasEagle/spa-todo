@@ -24,19 +24,11 @@
 
     gap: 15px;
 
-    .queue {
-      width: calc(100% / 3 - 15px);
-    }
-    .development {
-      width: calc(100% / 3 - 15px);
-    }
-    .done {
-      width: calc(100% / 3 - 15px);
-    }
-
     .queue,
     .development,
     .done {
+      width: calc(100% / 3 - 15px * 2);
+      height: 163.24px;
       display: flex;
       flex-direction: column;
       gap: 15px;

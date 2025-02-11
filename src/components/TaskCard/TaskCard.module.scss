@@ -3,9 +3,11 @@
 
   flex-direction: column;
 
-  background: pink;
+  background: #222;
 
   padding: 15px;
+
+  border-radius: 15px;
 
   h3,
   h4,
@@ -19,8 +21,6 @@
   .top {
     display: flex;
 
-    background: white;
-
     justify-content: space-between;
 
     .name {
@@ -33,7 +33,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
     gap: 15px;
   }
 }

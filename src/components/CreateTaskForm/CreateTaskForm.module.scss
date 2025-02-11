@@ -8,4 +8,40 @@
   flex-direction: column;
 
   gap: 15px;
+
+  .custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* Придаём input файлу облик обычной кнопки */
+  }
+
+  button {
+    border-radius: 15px;
+    background: rgb(245, 1, 245);
+
+    color: #ffffff;
+
+    font-weight: bold;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    transition: 0.5s;
+
+    outline: none;
+
+    border: none;
+
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgb(245, 1, 245);
+    }
+  }
 }
